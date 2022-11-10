@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -8,124 +10,168 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+//controoller
+
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  Future signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: _usernameController.text.trim(),
+      password: _passwordController.text.trim(),
+    );
+  }
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[300],
-        body: SafeArea(
-          child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.school,
-                    size: 100,
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.school_sharp,
+                  size: 100,
+                ),
+
+                //halo
+                // ignore: prefer_const_constructors
+                Text(
+                  'Halo!',
+                  style: GoogleFonts.bebasNeue(
+                    fontSize: 52,
                   ),
-                  //halo
-                  Text(
-                    'Halo!',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 52,
-                    ),
+                ),
+
+                SizedBox(
+                  height: 10,
+                ),
+
+                Text(
+                  'Selamat Datang Kembali!',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'Bertemu Kembali dengan IndLish!',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  //username
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.white),
+                ),
+
+                SizedBox(
+                  height: 50,
+                ),
+
+                //username
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: TextField(
+                    controller: _usernameController,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
-                        child: TextField(
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'Nama Pengguna'),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  //password
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.white),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.deepOrange),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
-                        child: TextField(
-                          obscureText: true,
-                          decoration: InputDecoration(
-                              border: InputBorder.none, hintText: 'Kata Sandi'),
-                        ),
-                      ),
+                      hintText: 'Username',
+                      fillColor: Colors.grey[200],
+                      filled: true,
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
+                ),
+
+                SizedBox(
+                  height: 10,
+                ),
+
+                //password
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: TextField(
+                    controller: _passwordController,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.deepOrange),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      hintText: 'Password',
+                      fillColor: Colors.grey[200],
+                      filled: true,
+                    ),
                   ),
-                  //button
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                ),
+
+                SizedBox(
+                  height: 10,
+                ),
+
+                //masukbutton
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: GestureDetector(
+                    onTap: signIn,
                     child: Container(
-                      padding: EdgeInsets.all(20),
+                      padding: EdgeInsets.all(
+                        20,
+                      ),
                       decoration: BoxDecoration(
-                        color: Colors.lightGreen,
+                        color: Colors.deepOrange,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Center(
                         child: Text(
                           'Masuk',
                           style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  //lupa
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('Tidak punya akun?'),
-                      Text(
-                        ' Daftar Sekarang',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
-                        ),
+                ),
+
+                SizedBox(
+                  height: 25,
+                ),
+
+                //register
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Belum punya akun?',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      ' Daftar Sekarang!',
+                      style: TextStyle(
+                        color: Colors.lightBlue,
+                        fontWeight: FontWeight.bold,
                       ),
-                    ],
-                  ),
-                ],
-              ),
+                    )
+                  ],
+                ),
+              ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
