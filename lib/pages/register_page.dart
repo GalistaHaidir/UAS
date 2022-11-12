@@ -1,31 +1,48 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class RegisterPage extends StatefulWidget {
+  final VoidCallback showLoginPage;
+
+  const RegisterPage({
+    Key? key,
+    required this.showLoginPage,
+  }) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-//controoller
+class _RegisterPageState extends State<RegisterPage> {
   final _nameController = TextEditingController();
   final _passwordController = TextEditingController();
-
-  Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: _nameController.text.trim(),
-      password: _passwordController.text.trim(),
-    );
-  }
+  final _confirmController = TextEditingController();
 
   @override
   void dispose() {
     _nameController.dispose();
     _passwordController.dispose();
+    _confirmController.dispose();
     super.dispose();
+  }
+
+  Future signUp() async {
+    if (passwordConfirmed()) {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _nameController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+    }
+  }
+
+  bool passwordConfirmed() {
+    if (_passwordController.text.trim() == _confirmController.text.trim()) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   @override
@@ -57,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
 
                 Text(
-                  'Selamat Datang Kembali!',
+                  'Daftar di bawah!',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
@@ -119,12 +136,38 @@ class _LoginPageState extends State<LoginPage> {
                   height: 10,
                 ),
 
+                //konfirmasi password
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: TextField(
+                    obscureText: true,
+                    controller: _confirmController,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.deepOrange),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      hintText: 'Konfirmasi Password',
+                      fillColor: Colors.grey[200],
+                      filled: true,
+                    ),
+                  ),
+                ),
+
+                SizedBox(
+                  height: 10,
+                ),
+
                 //masukbutton
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(
                     child: GestureDetector(
-                      onTap: signIn,
+                      onTap: signUp,
                       child: Container(
                         padding: EdgeInsets.all(
                           20,
@@ -135,7 +178,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         child: Center(
                           child: Text(
-                            'Masuk',
+                            'Daftar',
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -157,14 +200,17 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Belum punya akun?',
+                      'Saya sudah punya akun!?',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    Text(
-                      ' Daftar Sekarang!',
-                      style: TextStyle(
-                        color: Colors.lightBlue,
-                        fontWeight: FontWeight.bold,
+                    GestureDetector(
+                      onTap: widget.showLoginPage,
+                      child: Text(
+                        ' Masuk Sekarang!',
+                        style: TextStyle(
+                          color: Colors.lightBlue,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     )
                   ],
