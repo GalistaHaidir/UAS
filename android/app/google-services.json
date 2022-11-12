@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "812407926166",
+    "project_id": "uasakhir-f4cc9",
+    "storage_bucket": "uasakhir-f4cc9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812407926166:android:64934afcf0a0df9b0001b7",
+        "android_client_info": {
+          "package_name": "com.example.aplikasi_ini"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "812407926166-5nei38nfisnbv4ovvus85unem2f2n4ov.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcYv0clN-A6rrcr8sqTtfPImYaT0PBDyA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "812407926166-5nei38nfisnbv4ovvus85unem2f2n4ov.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "812407926166-6ivm8gai8ritj3so4hc1o198l06f6jgt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.aplikasiIni"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
