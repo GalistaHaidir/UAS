@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -55,16 +54,15 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  'images/logo.png',
-                  height: 100,
-                  width: 100,
+                Icon(
+                  Icons.school_sharp,
+                  size: 100,
                 ),
 
                 //halo
                 // ignore: prefer_const_constructors
                 Text(
-                  'IndLish',
+                  'Halo!',
                   style: GoogleFonts.bebasNeue(
                     fontSize: 52,
                   ),
@@ -201,7 +199,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Sudah punya akun?',
+                      'Saya sudah punya akun!?',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     GestureDetector(
