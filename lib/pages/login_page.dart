@@ -41,15 +41,16 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  Icons.school_sharp,
-                  size: 100,
+                Image.asset(
+                  'images/logo.png',
+                  height: 100,
+                  width: 100,
                 ),
 
                 //halo
                 // ignore: prefer_const_constructors
                 Text(
-                  'Halo!',
+                  'IndLish',
                   style: GoogleFonts.bebasNeue(
                     fontSize: 52,
                   ),

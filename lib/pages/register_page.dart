@@ -55,15 +55,16 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  Icons.school_sharp,
-                  size: 100,
+                Image.asset(
+                  'images/logo.png',
+                  height: 100,
+                  width: 100,
                 ),
 
                 //halo
                 // ignore: prefer_const_constructors
                 Text(
-                  'Halo!',
+                  'IndLish',
                   style: GoogleFonts.bebasNeue(
                     fontSize: 52,
                   ),
@@ -200,7 +201,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Saya sudah punya akun!?',
+                      'Sudah punya akun?',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     GestureDetector(

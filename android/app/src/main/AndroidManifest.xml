@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.aplikasi_ini">
    <application
-        android:label="aplikasi_ini"
+        android:label="IndLish"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
