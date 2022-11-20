@@ -1,5 +1,5 @@
+import 'package:aplikasi_ini/pages/soal_page.dart';
 import 'package:aplikasi_ini/util/emoticon_face.dart';
-import 'package:aplikasi_ini/util/soal_tile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange[800],
+      backgroundColor: Colors.deepOrange[900],
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: ' '),
@@ -65,10 +65,17 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.orange[600],
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        padding: EdgeInsets.all(16),
-                        child: Icon(
-                          Icons.school_sharp,
-                          color: Colors.white,
+                        padding: EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                FirebaseAuth.instance.signOut();
+                              },
+                              icon: Icon(Icons.logout),
+                              color: Colors.white,
+                            )
+                          ],
                         ),
                       ),
                     ],
@@ -103,6 +110,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ],
                       ),
+
                       //biasa
                       Column(
                         children: [
@@ -135,6 +143,8 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 15,
             ),
+
+            //kotak soal
             Expanded(
               child: ClipRRect(
                 borderRadius: BorderRadius.only(
@@ -143,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: Container(
                   padding: EdgeInsets.all(25),
-                  color: Colors.grey[100],
+                  color: Color.fromARGB(255, 218, 218, 218),
                   child: Center(
                     child: Column(
                       children: [
@@ -164,31 +174,76 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(
                           height: 20,
                         ),
-
-                        //list soal
-                        Expanded(
-                          child: ListView(
+                        //list soal 1
+                        Container(
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              SoalTile(
-                                icon: Icons.favorite,
-                                namaSoal: 'Bagian 1',
-                                jumlahSoal: 16,
-                                color: Colors.blue[800],
+                              Row(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(12),
+                                    child: Container(
+                                      padding: EdgeInsets.all(16),
+                                      color: Colors.orange,
+                                      child: Icon(
+                                        Icons.favorite,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 12,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Bagian 1',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        '16 soal',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.grey,
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
-                              SoalTile(
-                                icon: Icons.mood,
-                                namaSoal: 'Bagian 2',
-                                jumlahSoal: 16,
-                                color: Colors.green[800],
-                              ),
-                              SoalTile(
-                                icon: Icons.book_online,
-                                namaSoal: 'Bagian 3',
-                                jumlahSoal: 16,
-                                color: Colors.yellow[800],
+                              ElevatedButton(
+                                style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.green)),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SoalPage()));
+                                },
+                                child: Text('Kerjakan Latihan'),
                               ),
                             ],
                           ),
+                        ),
+                        SizedBox(
+                          height: 10,
                         ),
                       ],
                     ),
