@@ -1,8 +1,11 @@
-import 'package:aplikasi_ini/pages/soal_page.dart';
+import 'package:aplikasi_ini/pages/soal_page1.dart';
+import 'package:aplikasi_ini/pages/soal_page2.dart';
+import 'package:aplikasi_ini/pages/soal_page3.dart';
 import 'package:aplikasi_ini/util/emoticon_face.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:cool_alert/cool_alert.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,12 +21,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.deepOrange[900],
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ' '),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: ' '),
-        ],
-      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -108,6 +105,21 @@ class _HomePageState extends State<HomePage> {
                           EmoticonFace(
                             emoticonFace: '😣',
                           ),
+                          Container(
+                            child: TextButton(
+                              onPressed: () {
+                                CoolAlert.show(
+                                    context: context,
+                                    type: CoolAlertType.warning,
+                                    text:
+                                        "Ayo Semangat, Pembelajaran tidak dicapai secara kebetulan, itu harus dicari dengan semangat dan diperhatikan dengan ketekunan.");
+                              },
+                              child: Text(
+                                'Sad',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
 
@@ -117,6 +129,21 @@ class _HomePageState extends State<HomePage> {
                           EmoticonFace(
                             emoticonFace: '🙄',
                           ),
+                          Container(
+                            child: TextButton(
+                              onPressed: () {
+                                CoolAlert.show(
+                                    context: context,
+                                    type: CoolAlertType.warning,
+                                    text:
+                                        "Ayolah, Sedikit kemajuan setiap hari di dalam dirimu menambah sesuatu hingga hasil yang besar");
+                              },
+                              child: Text(
+                                'Flat',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                       //senang
@@ -125,6 +152,21 @@ class _HomePageState extends State<HomePage> {
                           EmoticonFace(
                             emoticonFace: '🙂',
                           ),
+                          Container(
+                            child: TextButton(
+                              onPressed: () {
+                                CoolAlert.show(
+                                    context: context,
+                                    type: CoolAlertType.success,
+                                    text:
+                                        "Bagus, Bersemangatlah dalam mempelajari sesuatu yang bermanfaat.");
+                              },
+                              child: Text(
+                                'Better',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                       //bgt
@@ -132,6 +174,22 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           EmoticonFace(
                             emoticonFace: '😇',
+                          ),
+                          Container(
+                            child: TextButton(
+                              onPressed: () {
+                                CoolAlert.show(
+                                  context: context,
+                                  type: CoolAlertType.success,
+                                  text:
+                                      "Luar Biasa, Apa pun kata orang lain, belajar dan bekerja keraslah untuk mencapai kesuksesan.",
+                                );
+                              },
+                              child: Text(
+                                'Happy',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -190,9 +248,9 @@ class _HomePageState extends State<HomePage> {
                                     borderRadius: BorderRadius.circular(12),
                                     child: Container(
                                       padding: EdgeInsets.all(16),
-                                      color: Colors.orange,
+                                      color: Colors.blue,
                                       child: Icon(
-                                        Icons.favorite,
+                                        Icons.school_outlined,
                                         color: Colors.white,
                                       ),
                                     ),
@@ -215,7 +273,7 @@ class _HomePageState extends State<HomePage> {
                                         height: 5,
                                       ),
                                       Text(
-                                        '16 soal',
+                                        '10 soal',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Colors.grey,
@@ -235,7 +293,8 @@ class _HomePageState extends State<HomePage> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => SoalPage()));
+                                          builder: (context) =>
+                                              SoalPagesatu()));
                                 },
                                 child: Text('Kerjakan Latihan'),
                               ),
@@ -244,6 +303,147 @@ class _HomePageState extends State<HomePage> {
                         ),
                         SizedBox(
                           height: 10,
+                        ),
+
+                        //soal bagian 2
+                        Container(
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(12),
+                                    child: Container(
+                                      padding: EdgeInsets.all(16),
+                                      color: Color.fromARGB(255, 255, 183, 0),
+                                      child: Icon(
+                                        Icons.school,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 12,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Bagian 2',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        '10 soal',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.grey,
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              ElevatedButton(
+                                style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.green)),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SoalDua()));
+                                },
+                                child: Text('Kerjakan Latihan'),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+
+                        //soal bagian 3
+                        Container(
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(12),
+                                    child: Container(
+                                      padding: EdgeInsets.all(16),
+                                      color: Color.fromARGB(255, 108, 70, 63),
+                                      child: Icon(
+                                        Icons.school_outlined,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 12,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Bagian 3',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        '10 soal',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.grey,
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              ElevatedButton(
+                                style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.green)),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SoalTiga()));
+                                },
+                                child: Text('Kerjakan Latihan'),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),

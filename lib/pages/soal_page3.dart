@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:aplikasi_ini/data/question_list.dart';
+import 'package:aplikasi_ini/data/question_list3.dart';
 import 'package:aplikasi_ini/pages/result_screen.dart';
 
-class SoalPage extends StatefulWidget {
-  const SoalPage({Key? key}) : super(key: key);
+class SoalTiga extends StatefulWidget {
+  const SoalTiga({Key? key}) : super(key: key);
 
   @override
-  State<SoalPage> createState() => _SoalPageState();
+  State<SoalTiga> createState() => _SoalTigaState();
 }
 
-class _SoalPageState extends State<SoalPage> {
+class _SoalTigaState extends State<SoalTiga> {
   Color mainColor = Color(0xFF252c4a);
   Color secondColor = Color(0xFF117eeb);
 
@@ -35,7 +35,7 @@ class _SoalPageState extends State<SoalPage> {
               isPressed = false;
             });
           },
-          itemCount: questions.length,
+          itemCount: questions3.length,
           itemBuilder: (context, index) {
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -43,7 +43,7 @@ class _SoalPageState extends State<SoalPage> {
                 SizedBox(
                   width: double.infinity,
                   child: Text(
-                    "Question $index /${questions.length}",
+                    "Question ${index + 1} /${questions3.length}",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w300,
@@ -60,16 +60,16 @@ class _SoalPageState extends State<SoalPage> {
                   height: 20.0,
                 ),
                 Text(
-                  questions[index].question!,
+                  questions3[index].question!,
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 28.0,
+                    fontSize: 20.0,
                   ),
                 ),
                 SizedBox(
                   height: 35.0,
                 ),
-                for (int i = 0; i < questions[index].answers!.length; i++)
+                for (int i = 0; i < questions3[index].answers!.length; i++)
                   Container(
                     width: double.infinity,
                     margin: EdgeInsets.only(
@@ -78,7 +78,7 @@ class _SoalPageState extends State<SoalPage> {
                     child: MaterialButton(
                       shape: StadiumBorder(),
                       color: isPressed
-                          ? questions[index].answers!.entries.toList()[i].value
+                          ? questions3[index].answers!.entries.toList()[i].value
                               ? isTrue
                               : isWrong
                           : secondColor,
@@ -91,7 +91,7 @@ class _SoalPageState extends State<SoalPage> {
                               setState(() {
                                 isPressed = true;
                               });
-                              if (questions[index]
+                              if (questions3[index]
                                   .answers!
                                   .entries
                                   .toList()[i]
@@ -101,7 +101,7 @@ class _SoalPageState extends State<SoalPage> {
                               }
                             },
                       child: Text(
-                        questions[index].answers!.keys.toList()[i],
+                        questions3[index].answers!.keys.toList()[i],
                         style: TextStyle(
                           color: Colors.white,
                         ),
@@ -116,7 +116,7 @@ class _SoalPageState extends State<SoalPage> {
                   children: [
                     OutlinedButton(
                       onPressed: isPressed
-                          ? index + 1 == questions.length
+                          ? index + 1 == questions3.length
                               ? () {
                                   Navigator.push(
                                       context,
@@ -141,7 +141,7 @@ class _SoalPageState extends State<SoalPage> {
                             width: 1.0,
                           )),
                       child: Text(
-                        index + 1 == questions.length
+                        index + 1 == questions3.length
                             ? "Lihat Hasil"
                             : "lanjut",
                         style: TextStyle(

@@ -1,4 +1,5 @@
 import 'package:aplikasi_ini/auth/auth_page.dart';
+import 'package:aplikasi_ini/auth/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../pages/home_page.dart';
@@ -13,7 +14,7 @@ class MainPage extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return HomePage();
+            return HomeAuth();
           } else {
             return AuthPage();
           }
