@@ -74,7 +74,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   borderSide: BorderSide(color: Colors.deepOrange),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                hintText: 'Username',
+                hintText: 'Email  ',
                 fillColor: Colors.grey[200],
                 filled: true,
               ),

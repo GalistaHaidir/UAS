@@ -1,7 +1,7 @@
+import 'package:aplikasi_ini/pages/about.dart';
 import 'package:aplikasi_ini/pages/soal_page1.dart';
 import 'package:aplikasi_ini/pages/soal_page2.dart';
 import 'package:aplikasi_ini/pages/soal_page3.dart';
-import 'package:aplikasi_ini/util/emoticon_face.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -62,14 +62,17 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.orange[600],
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        padding: EdgeInsets.all(10),
+                        padding: EdgeInsets.all(2),
                         child: Column(
                           children: [
                             IconButton(
                               onPressed: () {
-                                FirebaseAuth.instance.signOut();
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => AboutPage()));
                               },
-                              icon: Icon(Icons.logout),
+                              icon: Icon(Icons.more_horiz_outlined),
                               color: Colors.white,
                             )
                           ],
@@ -96,102 +99,84 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(
                     height: 25,
                   ),
-                  //emotikon
+                  //bad
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Column(
-                        children: [
-                          EmoticonFace(
-                            emoticonFace: '😣',
-                          ),
-                          Container(
-                            child: TextButton(
-                              onPressed: () {
-                                CoolAlert.show(
-                                    context: context,
-                                    type: CoolAlertType.warning,
-                                    text:
-                                        "Ayo Semangat, Pembelajaran tidak dicapai secara kebetulan, itu harus dicari dengan semangat dan diperhatikan dengan ketekunan.");
-                              },
-                              child: Text(
-                                'Sad',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                        ],
+                      ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors.orange),
+                            fixedSize: MaterialStateProperty.all(Size(65, 60))),
+                        onPressed: () {
+                          CoolAlert.show(
+                              context: context,
+                              type: CoolAlertType.warning,
+                              title: "Ayolah!!",
+                              text:
+                                  "Sedikit kemajuan setiap hari di dalam dirimu menambah sesuatu hingga hasil yang besar");
+                        },
+                        child: Text('😓',
+                            style: TextStyle(
+                              fontSize: 28,
+                            )),
                       ),
-
-                      //biasa
-                      Column(
-                        children: [
-                          EmoticonFace(
-                            emoticonFace: '🙄',
-                          ),
-                          Container(
-                            child: TextButton(
-                              onPressed: () {
-                                CoolAlert.show(
-                                    context: context,
-                                    type: CoolAlertType.warning,
-                                    text:
-                                        "Ayolah, Sedikit kemajuan setiap hari di dalam dirimu menambah sesuatu hingga hasil yang besar");
-                              },
-                              child: Text(
-                                'Flat',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                        ],
+                      //flat
+                      ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors.orange),
+                            fixedSize: MaterialStateProperty.all(Size(65, 60))),
+                        onPressed: () {
+                          CoolAlert.show(
+                              context: context,
+                              type: CoolAlertType.warning,
+                              title: "Ayo Semangat!!",
+                              text:
+                                  "Pembelajaran tidak dicapai secara kebetulan, itu harus dicari dengan semangat dan diperhatikan dengan ketekunan.");
+                        },
+                        child: Text('🙄',
+                            style: TextStyle(
+                              fontSize: 28,
+                            )),
                       ),
-                      //senang
-                      Column(
-                        children: [
-                          EmoticonFace(
-                            emoticonFace: '🙂',
-                          ),
-                          Container(
-                            child: TextButton(
-                              onPressed: () {
-                                CoolAlert.show(
-                                    context: context,
-                                    type: CoolAlertType.success,
-                                    text:
-                                        "Bagus, Bersemangatlah dalam mempelajari sesuatu yang bermanfaat.");
-                              },
-                              child: Text(
-                                'Better',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                        ],
+                      //better
+                      ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors.orange),
+                            fixedSize: MaterialStateProperty.all(Size(65, 60))),
+                        onPressed: () {
+                          CoolAlert.show(
+                              context: context,
+                              type: CoolAlertType.success,
+                              title: 'Bagus!!',
+                              text:
+                                  "Bersemangatlah dalam mempelajari sesuatu yang bermanfaat.");
+                        },
+                        child: Text('🙂',
+                            style: TextStyle(
+                              fontSize: 28,
+                            )),
                       ),
-                      //bgt
-                      Column(
-                        children: [
-                          EmoticonFace(
-                            emoticonFace: '😇',
-                          ),
-                          Container(
-                            child: TextButton(
-                              onPressed: () {
-                                CoolAlert.show(
-                                  context: context,
-                                  type: CoolAlertType.success,
-                                  text:
-                                      "Luar Biasa, Apa pun kata orang lain, belajar dan bekerja keraslah untuk mencapai kesuksesan.",
-                                );
-                              },
-                              child: Text(
-                                'Happy',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                        ],
+                      //happy
+                      ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors.orange),
+                            fixedSize: MaterialStateProperty.all(Size(65, 60))),
+                        onPressed: () {
+                          CoolAlert.show(
+                              context: context,
+                              type: CoolAlertType.success,
+                              title: "Luar Biasa!!",
+                              text:
+                                  "Apa pun kata orang lain, belajar dan bekerja keraslah untuk mencapai kesuksesan.");
+                        },
+                        child: Text('😇',
+                            style: TextStyle(
+                              fontSize: 28,
+                            )),
                       ),
                     ],
                   )
@@ -368,7 +353,9 @@ class _HomePageState extends State<HomePage> {
                                       MaterialPageRoute(
                                           builder: (context) => SoalDua()));
                                 },
-                                child: Text('Kerjakan Latihan'),
+                                child: Text(
+                                  'Kerjakan Latihan',
+                                ),
                               ),
                             ],
                           ),

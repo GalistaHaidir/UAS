@@ -1,3 +1,4 @@
+import 'package:aplikasi_ini/pages/about.dart';
 import 'package:aplikasi_ini/pages/home_page.dart';
 import 'package:aplikasi_ini/pages/profile_page.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ class _HomeAuthState extends State<HomeAuth> {
     final _ListPage = <Widget>[
       HomePage(),
       ProfilePage(),
+      AboutPage(),
     ];
 
     final _bottomNavBarItems = <BottomNavigationBarItem>[
