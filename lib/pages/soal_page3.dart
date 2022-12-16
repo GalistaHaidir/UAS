@@ -143,7 +143,7 @@ class _SoalTigaState extends State<SoalTiga> {
                       child: Text(
                         index + 1 == questions3.length
                             ? "Lihat Hasil"
-                            : "lanjut",
+                            : "Lanjut",
                         style: TextStyle(
                           color: Colors.white,
                         ),

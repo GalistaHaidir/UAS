@@ -143,7 +143,7 @@ class _SoalPageState extends State<SoalPagesatu> {
                       child: Text(
                         index + 1 == questions1.length
                             ? "Lihat Hasil"
-                            : "lanjut",
+                            : "Lanjut",
                         style: TextStyle(
                           color: Colors.white,
                         ),

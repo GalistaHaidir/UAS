@@ -22,7 +22,7 @@ class _ResultScreenState extends State<ResultScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "Congratulations",
+              "Selamat 😀",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 38,
@@ -33,7 +33,7 @@ class _ResultScreenState extends State<ResultScreen> {
               height: 20,
             ),
             Text(
-              "your score is: ",
+              "Nilai kamu adalah : ",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 28,
@@ -61,7 +61,7 @@ class _ResultScreenState extends State<ResultScreen> {
               },
               color: Colors.orange,
               textColor: Colors.white,
-              child: Text("pergi"),
+              child: Text("Pergi"),
             ),
           ],
         ),

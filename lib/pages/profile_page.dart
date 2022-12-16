@@ -15,70 +15,70 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.only(top: 150),
-        child: Stack(
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(top: 80),
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              decoration: BoxDecoration(
-                color: Colors.orange[600],
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(50),
-                  topRight: Radius.circular(50),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.orange, Colors.deepOrange.shade300],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+            stops: const [0.2, 0.9],
+          ),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              backgroundColor: Colors.amberAccent,
+              minRadius: 55.0,
+              child: CircleAvatar(
+                radius: 50.0,
+                child: Image.asset(
+                  'images/pp.png',
+                  fit: BoxFit.cover,
                 ),
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Masuk sebagai : ',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(user.email!,
-                      style: TextStyle(color: Colors.black, fontSize: 20)),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      FirebaseAuth.instance.signOut();
-                    },
-                    child: Text(
-                      'Logout',
-                    ),
-                    style: ElevatedButton.styleFrom(
-                        primary: Color.fromRGBO(196, 13, 0, 10),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                        textStyle: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold)),
-                  )
-                ],
-              ),
             ),
-            Align(
-              alignment: Alignment.topCenter,
-              child: Stack(
-                children: <Widget>[
-                  ClipOval(
-                    child: Image.asset(
-                      'images/profile.jpg',
-                      width: 150,
-                      height: 150,
-                      fit: BoxFit.cover,
-                    ),
-                  )
-                ],
-              ),
+            const SizedBox(
+              height: 10,
             ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Masuk sebagai : ' + user.email!,
+                  style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    FirebaseAuth.instance.signOut();
+                  },
+                  child: Text(
+                    'Logout',
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromRGBO(255, 291, 54, 12),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                      textStyle:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                ),
+              ],
+            )
           ],
         ),
       ),

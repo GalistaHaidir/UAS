@@ -30,10 +30,16 @@ class _AboutPageState extends State<AboutPage> {
                 color: Colors.white.withOpacity(0.5),
               ),
             ),
+            SizedBox(
+              height: 15,
+            ),
             Image.asset(
-              'images/logo.jpg',
-              height: 200,
-              width: 200,
+              'images/logo.png',
+              height: 100,
+              width: 100,
+            ),
+            SizedBox(
+              height: 15,
             ),
             Text(
               '@Kelompok 4 (PTIB-21)',

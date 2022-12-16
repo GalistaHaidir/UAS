@@ -143,7 +143,7 @@ class _SoalDuaState extends State<SoalDua> {
                       child: Text(
                         index + 1 == questions2.length
                             ? "Lihat Hasil"
-                            : "lanjut",
+                            : "Lanjut",
                         style: TextStyle(
                           color: Colors.white,
                         ),
