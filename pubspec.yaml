@@ -43,7 +43,7 @@ dependencies:
   fluttertoast: ^8.1.1
   cool_alert: ^1.1.0
   flutter_native_splash: ^2.2.16
-  cloud_firestore: ^4.2.0
+  
 
 
 dev_dependencies:

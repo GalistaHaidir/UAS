@@ -20,6 +20,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //dasar awal
       backgroundColor: Colors.deepOrange[900],
       body: SafeArea(
         child: Column(
@@ -35,6 +36,7 @@ class _HomePageState extends State<HomePage> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          //nama aplikasi
                           Text(
                             'IndLish',
                             style: TextStyle(
@@ -46,6 +48,7 @@ class _HomePageState extends State<HomePage> {
                           SizedBox(
                             height: 5,
                           ),
+                          //tanggal
                           Text(
                             DateFormat.yMMMEd().format(DateTime.now()),
                             style: TextStyle(
@@ -56,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
 
-                      //logobelajar
+                      //about app
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.orange[600],
@@ -83,8 +86,9 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(
                     height: 25,
                   ),
+                  //bagian tanya kabar
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
                         'Bagaimana perasaanmu kali ini?',
@@ -202,7 +206,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         // judul soal
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Text(
                               'Soal',
